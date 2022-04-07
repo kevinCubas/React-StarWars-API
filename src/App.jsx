@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { Container } from "./Components/Container.style"
-import { AllCharacters, Character, Image, InfoList } from "./Components/AllCharactersInformation"
+import { AllCharacters} from "./Components/AllCharactersInformation"
+import CharacterCard from "./Components/CharacterCard"
 
 export default function App() {
   const [starWarsCharacter, setStarWarsCharacter] = useState([])
@@ -37,21 +38,17 @@ export default function App() {
       <AllCharacters>
         {starWarsCharacter.map(character => {
           return (
-          <Character key={character.id} id={character.id}>
-            <div>
-              <Image src={character.image} alt={`${character.name} image`} />
-            </div>
-            <div>
-              <h2>{character.name}</h2>
-              <InfoList>
-                <li>Home World: {character.homeWorld}</li>
-                <li>Species: {character.species}</li>
-                <li><a href={character.moreLink} target="_blank" rel="noopener noreferrer">More about</a></li>
-              </InfoList>
-            </div>
-          </Character>
+          <CharacterCard key={character.id} 
+          identifier={character.id} 
+          image={character.image}
+          name={character.name}
+          homeWorld={character.homeWorld}
+          species={character.species}
+          moreLink={character.moreLink}
+          />          
           )
-        })}
+        })
+      }
       </AllCharacters>
     </Container>
   )
