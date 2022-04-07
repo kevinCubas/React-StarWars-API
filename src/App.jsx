@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react"
-import { Container } from "./Components/Container.style"
+import { Container, Header, SearchButton} from "./Components/Container.style"
 import { AllCharacters} from "./Components/AllCharactersInformation"
 import CharacterCard from "./Components/CharacterCard"
 
 export default function App() {
   const [starWarsCharacter, setStarWarsCharacter] = useState([])
+  const [searchCharacter, setSearchCharacter] = useState("")
 
   useEffect(() => {
     fetch("https://akabab.github.io/starwars-api/api/all.json")
@@ -34,9 +35,21 @@ export default function App() {
   
   return (
     <Container>
-      <h1>Star Wars - Characters</h1>
+      <Header>
+        <h1>Star Wars - Characters</h1>
+        <SearchButton placeholder="Search a Character..." type="text" name="searchBar" id="searchBar"
+        onChange={event => {
+          setSearchCharacter(event.target.value)
+        }} />
+      </Header>
       <AllCharacters>
-        {starWarsCharacter.map(character => {
+        {starWarsCharacter.filter(character => {
+          if(searchCharacter === ""){
+            return character
+          } else if(character.name.toLowerCase().includes(searchCharacter.toLocaleLowerCase())) {
+            return character
+          }
+        }).map(character => {
           return (
           <CharacterCard key={character.id} 
           identifier={character.id} 

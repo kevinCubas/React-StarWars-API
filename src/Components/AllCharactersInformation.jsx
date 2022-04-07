@@ -5,6 +5,12 @@ export const AllCharacters = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   row-gap: 3rem;
   column-gap: 2rem;
+
+  @media (max-width: 520px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
 `
 export const Character = styled.div`
   text-align: center;
@@ -15,6 +21,7 @@ export const Character = styled.div`
   align-items: center;
   transition: all 0.5s;
   color: #ffffffbe;
+  max-width: 200px;
 
   &:hover {
     transform: scale(1.1);
