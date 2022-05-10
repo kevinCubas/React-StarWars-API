@@ -29,7 +29,7 @@ ReactJS SPA(Single Page Application) that dynamically display Star Wars Characte
 
 Clone the repository
 
-Use **yarn** or **npm install** to install project dependencies.
+Use **yarn** or **npm install** to install project dependencies. \
 To install styled-components Run:
 
 **with npm**
